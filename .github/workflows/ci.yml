@@ -13,18 +13,18 @@ jobs:
       - name: Checkmarx AST CLI Action
         uses: checkmarxDev/ast-github-action@master
         with:
-          project_name: sonar-example
+          project_name: jvlstuff/sonar-ex
           base_uri: ${{ secrets.BASE_URI }}
           cx_tenant: ${{ secrets.TENANT }}
-          cx_client_id: ${{ secrets.CLIENT_ID }}
-          cx_client_secret: ${{ secrets.SECRET }}
+          cx_client_id: ${{ secrets.AST_CLIENT_ID }}
+          cx_client_secret: ${{ secrets.AST_CLIENT_SECRET }}
           additional_params: --report-format sonar
       - name: Sonar CLI Action 
         uses: sonarsource/sonarqube-scan-action@master
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUBTOKEN }}
         with:
           args: >
             -Dsonar.externalIssuesReportPaths=cx_result_sonar.json
