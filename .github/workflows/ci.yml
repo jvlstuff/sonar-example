@@ -18,7 +18,7 @@ jobs:
           cx_tenant: ${{ secrets.TENANT }}
           cx_client_id: ${{ secrets.AST_CLIENT_ID }}
           cx_client_secret: ${{ secrets.AST_CLIENT_SECRET }}
-          additional_params: --report-format sonar
+          additional_params: --report-format sonar --scan-types sast
       - name: Sonar CLI Action 
         uses: sonarsource/sonarqube-scan-action@master
         env:
